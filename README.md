@@ -8,9 +8,13 @@ Lista radnika treba da sadrži mogućnosti:
 - izmjene korisnika, 
 - pretragu
 
-Evidencija za daily scrum sastanke treba da sadrži tabelu koja bilježi vrijeme dolaska uposlenika na sastanak. U slučaju da je korisnik došao na sastanak poslije 8:45h - u posljednju kolonu treba da se automatski upiše vrijednost "Ne".
+Evidencija za daily scrum sastanke treba da sadrži tabelu koja bilježi vrijeme dolaska uposlenika na sastanak. 
+U slučaju da je korisnik došao na sastanak poslije 8:45h - u posljednju kolonu treba da se automatski upiše vrijednost "Ne".
 
-Korisnil treba imati mogućnost dodavanja, brisanja kao i pretrage.
+Korisnik treba imati mogućnost:
+- dodavanja, 
+- brisanja kao i 
+- pretrage.
 
 NAPOMENA: Osmisli UI za dodavanje zapisa u tabelu za sastanke.
 NAPOMENA: Prilikom dodavanja zapisa u tabelu za sastanke, korisnik može unijeti samo ime uposlenika koje se nalazi u tabeli "Lista radnika".
