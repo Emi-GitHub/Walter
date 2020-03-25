@@ -22,6 +22,10 @@
 .two-buttons {
     float: right;
 }
+.employee-button {
+    border: 0.5px solid gray !important;
+    width: 86px !important;
+}
 .my-segment {
     overflow-y: scroll;
     height: 200px;

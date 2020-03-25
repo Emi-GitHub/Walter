@@ -17,16 +17,16 @@ class ListaRadnika extends Component {
                         <div className="employee">
                             Uposlenik x
                             <div className="ui small buttons two-buttons">
-                                <div className="ui button">Izmijeni</div>
-                                <div className="ui button">Izbriši</div>
+                                <div className="ui button employee-button">Izmijeni</div>
+                                <div className="ui button employee-button">Obriši</div>
                             </div>
                             <br/> <br/>
                         </div>
                         <div className="employee">
                             Uposlenik x
                             <div className="ui small buttons two-buttons">
-                                <div className="ui button">Izmijeni</div>
-                                <div className="ui button">Izbriši</div>
+                                <div className="ui button employee-button">Izmijeni</div>
+                                <div className="ui button employee-button">Obriši</div>
                             </div>
                             <br/> <br/>
                         </div>
