@@ -1,0 +1,24 @@
+.search-employee{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.employee-input{
+    width: 100%;
+    margin-right: 20px;
+}
+.employee-input:hover{
+    color: skyblue;
+}
+.employee-parent{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.employee{
+    margin-bottom: 5px;
+}
+.two-buttons{
+    float: right;
+}
