@@ -88,3 +88,9 @@ export const setMess = value => {
         payload: value
     }
 }
+export const deleteUser = (dailys, x) => {
+    return {
+        type: 'DELETE_DAILYS',
+        payload: dailys.filter ((el, i) => { return i!==x })
+    }
+}

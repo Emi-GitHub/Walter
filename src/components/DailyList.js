@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { deleteUser } from '../actions';
 
 class DailyList extends Component {
     renderDaily = (el,i) => {
         return <tr key={i}>
         <td>
             <img src="edit-icon.png" alt="edit-icon" className="table-icon edit-icon"/>
-            <img src="user-icon.png" alt="edit-icon" className="table-icon"/>
+            <img src="user-icon.png" alt="edit-icon" className="table-icon" onClick={()=>this.props.deleteUser(this.props.dailys, i)}/> 
         </td>
         <td>{el.name}</td>
         <td>{el.time}</td>
@@ -27,4 +28,4 @@ const mapStateToProps = state => ({
     dailys: state.dailys,
     dailySearch: state.dailySearch,
 });
-export default connect(mapStateToProps)(DailyList);
+export default connect(mapStateToProps, {deleteUser})(DailyList);
