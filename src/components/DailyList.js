@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class DailyList extends Component {
-    renderDaily = (el) => {
-        return <tr>
+    renderDaily = (el,i) => {
+        return <tr key={i}>
         <td>
             <img src="edit-icon.png" alt="edit-icon" className="table-icon edit-icon"/>
             <img src="user-icon.png" alt="edit-icon" className="table-icon"/>
@@ -15,7 +15,7 @@ class DailyList extends Component {
     }
     render() {
         const filterDailys = this.props.dailys.filter(el => {
-            return el.name.indexOf(this.props.dailySearch) !== -1
+            return el.name.indexOf(this.props.dailySearch) !== -1;
         })
         return filterDailys.map ((el, i) => {
             return this.renderDaily(el, i);
@@ -25,6 +25,6 @@ class DailyList extends Component {
 
 const mapStateToProps = state => ({
     dailys: state.dailys,
-    dailySearch: state.dailySearch
+    dailySearch: state.dailySearch,
 });
 export default connect(mapStateToProps)(DailyList);

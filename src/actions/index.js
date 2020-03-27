@@ -40,16 +40,10 @@ export const setSearch = value => {
         payload: value
     }
 }
-export const addDailysName = (dailys, name) => {
+export const addDailys = (dailys, name, time, onTime) => {
     return {
-        type: 'ADD_DAILYS_NAME',
-        payload: {...dailys, name: name}
-    }
-}
-export const addDailysTime = (dailys, time) => {
-    return {
-        type: 'ADD_DAILYS_TIME',
-        payload: {...dailys, time: time}
+        type: 'ADD_DAILYS',
+        payload: [...dailys, {name:name, time:time, onTime:onTime}]
     }
 }
 export const setName = name => {
@@ -64,9 +58,33 @@ export const setTime = time => {
         payload: time
     }
 }
+export const refreshName = () => {
+    return {
+        type: 'REFRESH_NAME',
+        payload: ''
+    }
+}
+export const refreshTime = () => {
+    return {
+        type: 'REFRESH_TIME',
+        payload: ''
+    }
+}
 export const setDailySearch = value => {
     return {
         type: 'SET_DAILY_SEARCH',
+        payload: value
+    }
+}
+export const setOnTime = value => {
+    return {
+        type: 'SET_ON_TIME',
+        payload: value
+    }
+}
+export const setMess = value => {
+    return {
+        type: 'SET_MESS',
         payload: value
     }
 }

@@ -28,26 +28,39 @@ export const search = (state='', action) => {
 }
 export const dailys = (state=[{name: "Emina", time:"8:00", onTime:"DA"},{name: "amina", time:"9:00", onTime:"DA"}], action) => {
     switch(action.type) {
-        case 'ADD_DAILYS_NAME': return action.payload;
-        case 'ADD_DAILYS_TIME': return action.payload;
+        case 'ADD_DAILYS': return action.payload;
         default: return state;
     }
 }
 export const name = (state='', action) => {
     switch(action.type) {
         case 'SET_NAME': return action.payload;
+        case 'REFRESH_NAME': return action.payload;
         default: return state;
     }
 }
 export const time = (state='', action) => {
     switch(action.type) {
         case 'SET_TIME': return action.payload;
+        case 'REFRESH_TIME': return action.payload;
+        default: return state;
+    }
+}
+export const onTime = (state='DA', action) => {
+    switch(action.type) {
+        case 'SET_ON_TIME': return action.payload;
         default: return state;
     }
 }
 export const dailySearch = (state='', action) => {
     switch(action.type) {
         case 'SET_DAILY_SEARCH': return action.payload;
+        default: return state;
+    }
+}
+export const mess = (state=true, action) => {
+    switch(action.type) {
+        case 'SET_MESS': return action.payload;
         default: return state;
     }
 }

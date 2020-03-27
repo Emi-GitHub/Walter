@@ -17,7 +17,10 @@ img {
     display: inline-block;
     margin-right: 1em;
 }
-
+.negative-mess {
+    margin-left: 20px !important;
+    margin-right: 120px !important;
+}
 @media 
 only screen and (max-width: 767px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {

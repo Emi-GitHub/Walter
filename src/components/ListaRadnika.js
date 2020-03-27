@@ -25,6 +25,7 @@ class ListaRadnika extends Component {
                                 placeholder="Add employee..."
                                 value={this.props.content}
                                 onChange={(event)=>this.props.setContent(event.target.value)}
+                                required
                             />
                             <i className="users icon"></i>
                         </div>

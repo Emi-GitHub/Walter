@@ -6,7 +6,9 @@ import { search } from './otherReducer';
 import { dailys } from './otherReducer';
 import { name } from './otherReducer';
 import { time } from './otherReducer';
+import { onTime } from './otherReducer';
 import { dailySearch } from './otherReducer';
+import { mess } from './otherReducer';
 
 export default combineReducers ({
     employees,
@@ -16,5 +18,7 @@ export default combineReducers ({
     dailys,
     name,
     time,
-    dailySearch
+    dailySearch,
+    onTime,
+    mess
 })
