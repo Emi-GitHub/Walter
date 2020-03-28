@@ -94,3 +94,15 @@ export const deleteUser = (dailys, x) => {
         payload: dailys.filter ((el, i) => { return i!==x })
     }
 }
+export const setEditDailyMode = value => {
+    return {
+        type: 'SET_EDIT_DAILY_MODE',
+        payload: !value
+    }
+}
+export const updateDailyComponentValue = (dailys, x, name, time, onTime) => {
+    return {
+        type: 'UPDATE_DAILY_COMPONENT_VALUE',
+        payload: dailys.map((el, i) => i === x ? {...el, name: name, time: time, onTime: onTime}: el)
+    }
+}

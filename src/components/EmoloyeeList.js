@@ -7,9 +7,7 @@ class EmoloyeeList extends Component {
         this.props.setEditMode(this.props.editMode);
     }
     saveEditMode = (employee, i, value) => {
-        console.log('value on clik edit:', value)
         this.props.updateComponentValue(this.props.employees, value, i);
-        console.log('poslije',this.props.employees,'value', value, 'i', i)
         this.props.setEditMode(this.props.editMode)
     }
     renderEmployees = (employee, i) => {
@@ -23,7 +21,7 @@ class EmoloyeeList extends Component {
                         <br/><br/>
                     </div> : 
                     <div className="employee">
-                        <div class="ui transparent input">
+                        <div className="ui transparent input">
                             <input type="text" defaultValue={employee} ref="theTextInput" />
                         </div>
                         <div className="ui small buttons two-buttons">
@@ -37,7 +35,6 @@ class EmoloyeeList extends Component {
         const filterEmployees = this.props.employees.filter(employee => {
             return employee.indexOf(this.props.search) !== -1
         })
-        console.log('prije',this.props.employees)
         return (
             <div>
                 { filterEmployees.map ((employee, i) => {

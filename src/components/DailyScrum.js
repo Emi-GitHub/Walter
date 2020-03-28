@@ -16,8 +16,9 @@ class DailyScrum extends Component {
         var exist = false;
         this.props.employees.map(el => {
             if(el === this.props.name) exist=true;
+            return null;
         })
-        if(exist !== true)  this.props.setMess(false)
+        if(exist !== true) this.props.setMess(false)
         else this.props.addDailys(this.props.dailys, this.props.name, this.props.time, this.props.onTime);
         this.props.refreshName();
         this.props.refreshTime();

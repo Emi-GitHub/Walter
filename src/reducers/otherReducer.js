@@ -30,6 +30,7 @@ export const dailys = (state=[{name: "John Doe", time:"8:00", onTime:"DA"},{name
     switch(action.type) {
         case 'ADD_DAILYS': return action.payload;
         case 'DELETE_DAILYS': return action.payload;
+        case 'UPDATE_DAILY_COMPONENT_VALUE': return action.payload;
         default: return state;
     }
 }
@@ -62,6 +63,12 @@ export const dailySearch = (state='', action) => {
 export const mess = (state=true, action) => {
     switch(action.type) {
         case 'SET_MESS': return action.payload;
+        default: return state;
+    }
+}
+export const editDailyMode = (state=false, action) => {
+    switch(action.type) {
+        case 'SET_EDIT_DAILY_MODE': return action.payload;
         default: return state;
     }
 }
