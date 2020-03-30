@@ -10,6 +10,7 @@ import { onTime } from './otherReducer';
 import { dailySearch } from './otherReducer';
 import { mess } from './otherReducer';
 import { editDailyMode } from './otherReducer';
+import { timeMess } from './otherReducer';
 
 export default combineReducers ({
     employees,
@@ -22,5 +23,6 @@ export default combineReducers ({
     dailySearch,
     onTime,
     mess,
-    editDailyMode
+    editDailyMode,
+    timeMess
 })

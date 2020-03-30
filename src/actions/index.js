@@ -106,3 +106,9 @@ export const updateDailyComponentValue = (dailys, x, name, time, onTime) => {
         payload: dailys.map((el, i) => i === x ? {...el, name: name, time: time, onTime: onTime}: el)
     }
 }
+export const setTimeMess = value => {
+    return {
+        type: 'SET_TIME_MESS',
+        payload: value
+    }
+}

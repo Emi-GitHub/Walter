@@ -14,8 +14,18 @@ class DailyList extends Component {
         return !this.props.editDailyMode ? 
             <tr key={i}>
                 <td>
-                    <img src="edit-icon.png" alt="edit-icon" className="table-icon edit-icon" onClick={()=>this.onEditClick()}/>
-                    <img src="user-icon.png" alt="edit-icon" className="table-icon" onClick={()=>this.props.deleteUser(this.props.dailys, i)}/> 
+                    <img 
+                        src="edit-icon.png" 
+                        alt="edit-icon" 
+                        className="table-icon edit-icon" 
+                        onClick={()=>this.onEditClick()}
+                    />
+                    <img 
+                        src="user-icon.png" 
+                        alt="edit-icon" 
+                        className="table-icon" 
+                        onClick={()=>this.props.deleteUser(this.props.dailys, i)}
+                    /> 
                 </td>
                 <td>{el.name}</td>
                 <td>{el.time}</td>
@@ -23,12 +33,34 @@ class DailyList extends Component {
             </tr> : 
             <tr key={i}>
                 <td>
-                    <img src="save-icon.png" alt="save-icon" className="table-icon edit-icon" onClick={()=>this.saveEditMode(el, i, this.refs.theNameInput.value, this.refs.theTimeInput.value, this.refs.theOnTimeInput.value)}/>
-                    <img src="exit-icon.png" alt="exit-icon" className="table-icon"  onClick={()=>this.props.setEditDailyMode(this.props.editDailyMode)}/> 
+                    <img 
+                        src="save-icon.png" 
+                        alt="save-icon" 
+                        className="table-icon edit-icon" 
+                        onClick={()=>this.saveEditMode(el, i, this.refs.name.value, this.refs.time.value, this.refs.onTime.value)}
+                    />
+                    <img 
+                        src="exit-icon.png" 
+                        alt="exit-icon" 
+                        className="table-icon"  
+                        onClick={()=>this.props.setEditDailyMode(this.props.editDailyMode)}
+                    /> 
                 </td>
-                <td><div className="ui transparent input icon-input"><input type="text" defaultValue={el.name} ref="theNameInput"/></div></td>
-                <td><div className="ui transparent input icon-input"><input type="text" defaultValue={el.time} ref="theTimeInput"/></div></td>
-                <td><div className="ui transparent input icon-input"><input type="text" defaultValue={el.onTime} ref="theOnTimeInput"/></div></td>
+                <td>
+                    <div className="ui transparent input icon-input">
+                        <input type="text" defaultValue={el.name} ref="name"/>
+                    </div>
+                </td>
+                <td>
+                    <div className="ui transparent input icon-input">
+                        <input type="text" defaultValue={el.time} ref="time"/>
+                    </div>
+                </td>
+                <td>
+                    <div className="ui transparent input icon-input">
+                        <input type="text" defaultValue={el.onTime} ref="onTime"/>
+                    </div>
+                </td>
             </tr>
     }
     render() {

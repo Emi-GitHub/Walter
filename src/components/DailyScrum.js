@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setName, setTime, setDailySearch, addDailys, refreshName, refreshTime, setOnTime, setMess} from '../actions';
+import { setName, setTime, setDailySearch, addDailys, refreshName, refreshTime, setOnTime, setMess, setTimeMess} from '../actions';
 import DailyList from './DailyList';
 import '../style/DailyScrum.css';
 
@@ -11,15 +11,26 @@ class DailyScrum extends Component {
         if((parseInt(hours)===8 && parseInt(minutes)>45) || (parseInt(hours)>8)) this.props.setOnTime('NE'); 
         else this.props.setOnTime('DA'); 
     }
-    onFormSubmit = event => {
-        event.preventDefault();
+    validateTime = () => {
+        var exist = true;
+        var timeFormat = /^([0-9]{2}):([0-9]{2})$/;
+        if(!timeFormat.test(this.props.time)) { exist= false; this.props.setTimeMess(true)}
+        else  this.props.setTimeMess(false)
+        return exist;
+    }
+    validationName = () => {
         var exist = false;
         this.props.employees.map(el => {
             if(el === this.props.name) exist=true;
             return null;
         })
-        if(exist !== true) this.props.setMess(false)
-        else this.props.addDailys(this.props.dailys, this.props.name, this.props.time, this.props.onTime);
+        if(exist === false) this.props.setMess(false);
+        return exist;
+    }
+    onFormSubmit = event => {
+        event.preventDefault();
+        if ((this.validationName()===false && this.validateTime()===false) || (this.validationName()===false) || (this.validateTime()===false)){console.log("not correct")}
+        else  this.props.addDailys(this.props.dailys, this.props.name, this.props.time, this.props.onTime);
         this.props.refreshName();
         this.props.refreshTime();
     }
@@ -31,6 +42,17 @@ class DailyScrum extends Component {
                     We're sorry we cannot add this emoloyee
                 </div>
                 <p>This employee does not exist in the table "Lista radnika"</p>
+            </div>
+        )
+    }
+    showTimeError = () => {
+        return (
+            <div className="ui negative message negative-mess">
+                <i className="close icon"></i>
+                <div className="header">
+                    We're sorry we cannot add this emoloyee
+                </div>
+                <p>Time must have format _ _ : _ _</p>
             </div>
         )
     }
@@ -61,7 +83,7 @@ class DailyScrum extends Component {
                                 type="text" 
                                 placeholder="_ _ : _ _"
                                 value={this.props.time}
-                                onChange={(event) =>this.props.setTime(event.target.value)}
+                                onChange={(event) =>{this.props.setTime(event.target.value); this.props.setTimeMess(false)}}
                                 required
                             />
                             <i className="clock icon"></i>
@@ -69,6 +91,7 @@ class DailyScrum extends Component {
                         <button className="ui button">Dodaj</button>
                     </div>
                     {this.props.mess===false ? this.notExistMessage() : null}
+                    {this.props.timeMess===true ? this.showTimeError() : null}
                 </form>
                 <div className="employe-table">
                     <table className="ui celled table">
@@ -97,6 +120,7 @@ const mapStateToProps = state => ({
     name: state.name,
     time: state.time,
     onTime: state.onTime,
-    mess: state.mess
+    mess: state.mess,
+    timeMess: state.timeMess
 });
-export default connect(mapStateToProps, {setName, setTime, setDailySearch, addDailys, refreshName, refreshTime, setOnTime, setMess})(DailyScrum);
+export default connect(mapStateToProps, {setName, setTime, setDailySearch, addDailys, refreshName, refreshTime, setOnTime, setMess, setTimeMess})(DailyScrum);
