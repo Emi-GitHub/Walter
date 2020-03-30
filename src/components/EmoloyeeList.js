@@ -1,35 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteEmployee, setEditMode, updateComponentValue } from '../actions';
+import { deleteEmployee, updateComponentValue, setMode } from '../actions';
 
 class EmoloyeeList extends Component {
-    onEditClick = () => {
-        this.props.setEditMode(this.props.editMode);
+    onEditClick = (i) => {
+        this.props.setMode(i);
     }
     saveEditMode = (employee, i, value) => {
         this.props.updateComponentValue(this.props.employees, value, i);
-        this.props.setEditMode(this.props.editMode)
+        this.props.setMode(false)
+    }
+    showEdit = (employee, i) => {
+        return <div className="employee">
+        <div className="ui transparent input">
+            <input type="text" defaultValue={employee} ref="theTextInput" />
+        </div>
+        <div className="ui small buttons two-buttons">
+            <div className="ui button employee-button" onClick={()=>this.saveEditMode(employee, i, this.refs.theTextInput.value)}>Snimi</div>
+            <div className="ui button employee-button" onClick={()=>this.props.setMode(false)}>Odbaci</div> 
+        </div>
+        <br/><br/>
+    </div>
     }
     renderEmployees = (employee, i) => {
-        return !this.props.editMode ? 
-                    <div className="employee" key={i}>
-                        {employee}
-                        <div className="ui small buttons two-buttons">
-                            <div className="ui button employee-button" onClick={()=>this.onEditClick()}>Izmijeni</div>
-                            <div className="ui button employee-button" onClick={()=>this.props.deleteEmployee(this.props.employees, i)}>Obriši</div> 
-                        </div>
-                        <br/><br/>
-                    </div> : 
-                    <div className="employee">
-                        <div className="ui transparent input">
-                            <input type="text" defaultValue={employee} ref="theTextInput" />
-                        </div>
-                        <div className="ui small buttons two-buttons">
-                            <div className="ui button employee-button" onClick={()=>this.saveEditMode(employee, i, this.refs.theTextInput.value)}>Snimi</div>
-                            <div className="ui button employee-button" onClick={()=>this.props.setEditMode(this.props.editMode)}>Odbaci</div> 
-                        </div>
-                        <br/><br/>
-                    </div>
+        return i===this.props.mode ? this.showEdit(employee, i) :
+            <div className="employee" key={i}>
+                {employee}
+                <div className="ui small buttons two-buttons">
+                    <div className="ui button employee-button" onClick={()=>this.onEditClick(i)}>Izmijeni</div>
+                    <div className="ui button employee-button" onClick={()=>this.props.deleteEmployee(this.props.employees, i)}>Obriši</div> 
+                </div>
+                <br/><br/>
+            </div> 
     }
     render() {
         const filterEmployees = this.props.employees.filter(employee => {
@@ -47,7 +49,7 @@ class EmoloyeeList extends Component {
 }
 const mapStateToProps = state => ({
     employees: state.employees,
-    editMode: state.editMode,
-    search: state.search
+    search: state.search,
+    mode: state.mode
 });
-export default connect(mapStateToProps, {deleteEmployee, setEditMode, updateComponentValue})(EmoloyeeList);
+export default connect(mapStateToProps, {deleteEmployee, updateComponentValue, setMode})(EmoloyeeList);

@@ -78,3 +78,9 @@ export const timeMess = (state=false, action) => {
         default: return state;
     }
 }
+export const mode = (state=false, action) => {
+    switch(action.type) {
+        case 'SET_MODE': return action.payload;
+        default: return state;
+    }
+}

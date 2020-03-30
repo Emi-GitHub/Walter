@@ -112,3 +112,9 @@ export const setTimeMess = value => {
         payload: value
     }
 }
+export const setMode = value => {
+    return {
+        type: 'SET_MODE',
+        payload: value
+    }
+}
