@@ -73,7 +73,7 @@ class DailyScrum extends Component {
                                 type="text" 
                                 placeholder="Add employee..."
                                 value={this.props.name}
-                                onChange={(event)=>{this.props.setName(event.target.value); this.props.setMess(true)}}
+                                onChange={(event)=>{this.props.setName(event.target.value); this.props.setMess(true); this.props.setTimeMess(false)}}
                                 required
                             />
                             <i className="users icon"></i>
