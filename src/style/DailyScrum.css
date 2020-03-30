@@ -22,7 +22,10 @@ img {
     margin-right: 120px !important;
 }
 .icon-input {
-    width: 80px;
+    margin-left: 90px;
+}
+.icon-input-time {
+    margin-left: 130px;
 }
 @media 
 only screen and (max-width: 767px),

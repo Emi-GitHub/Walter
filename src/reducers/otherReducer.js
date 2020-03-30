@@ -26,7 +26,7 @@ export const search = (state='', action) => {
         default: return state;
     }
 }
-export const dailys = (state=[{name: "John Doe", time:"8:00", onTime:"DA"} /*,{name: "Chloe Doe", time:"9:00", onTime:"NE"}, {name: "John Smith", time:"8:30", onTime:"DA"}*/], action) => {
+export const dailys = (state=[{name: "John Doe", time:"8:00", onTime:"DA"},{name: "Chloe Doe", time:"9:00", onTime:"NE"}, {name: "John Smith", time:"8:30", onTime:"DA"}], action) => {
     switch(action.type) {
         case 'ADD_DAILYS': return action.payload;
         case 'DELETE_DAILYS': return action.payload;
@@ -81,6 +81,12 @@ export const timeMess = (state=false, action) => {
 export const mode = (state=false, action) => {
     switch(action.type) {
         case 'SET_MODE': return action.payload;
+        default: return state;
+    }
+}
+export const dailyMode = (state=false, action) => {
+    switch(action.type) {
+        case 'SET_DAILY_MODE': return action.payload;
         default: return state;
     }
 }

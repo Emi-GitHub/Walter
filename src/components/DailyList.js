@@ -1,24 +1,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteUser, setEditDailyMode, updateDailyComponentValue} from '../actions';
+import { deleteUser, updateDailyComponentValue, setDailyMode} from '../actions';
 
 class DailyList extends Component {
-    onEditClick = () => {
-        this.props.setEditDailyMode(this.props.editDailyMode);
+    onEditClick = (i) => {
+        this.props.setDailyMode(i);
     }
     saveEditMode = (dailyee, i, name, time, onTime) => {
         this.props.updateDailyComponentValue(this.props.dailys, i, name, time, onTime);
-        this.props.setEditDailyMode(this.props.editDailyMode);
+        this.props.setDailyMode(false);
+    }
+    showEdit = (el, i) => {
+        return <tr key={i}>
+        <td>
+            <img 
+                src="save-icon.png" 
+                alt="save-icon" 
+                className="table-icon edit-icon" 
+                onClick={()=>this.saveEditMode(el, i, this.refs.name.value, this.refs.time.value, this.refs.onTime.value)}
+            />
+            <img 
+                src="exit-icon.png" 
+                alt="exit-icon" 
+                className="table-icon"  
+                onClick={()=>this.props.setDailyMode(false)}
+            /> 
+        </td>
+        <td>
+            <div className="ui transparent input icon-input">
+                <input type="text" defaultValue={el.name} ref="name"/>
+            </div>
+        </td>
+        <td>
+            <div className="ui transparent input icon-input-time">
+                <input type="text" defaultValue={el.time} ref="time"/>
+            </div>
+        </td>
+        <td>
+            <div className="ui transparent input icon-input-time">
+                <input type="text" defaultValue={el.onTime} ref="onTime"/>
+            </div>
+        </td>
+    </tr>
     }
     renderDaily = (el,i) => {
-        return !this.props.editDailyMode ? 
+        return i === this.props.dailyMode ? this.showEdit(el, i) :
             <tr key={i}>
                 <td>
                     <img 
                         src="edit-icon.png" 
                         alt="edit-icon" 
                         className="table-icon edit-icon" 
-                        onClick={()=>this.onEditClick()}
+                        onClick={()=>this.onEditClick(i)}
                     />
                     <img 
                         src="user-icon.png" 
@@ -30,38 +63,8 @@ class DailyList extends Component {
                 <td>{el.name}</td>
                 <td>{el.time}</td>
                 <td>{el.onTime}</td>
-            </tr> : 
-            <tr key={i}>
-                <td>
-                    <img 
-                        src="save-icon.png" 
-                        alt="save-icon" 
-                        className="table-icon edit-icon" 
-                        onClick={()=>this.saveEditMode(el, i, this.refs.name.value, this.refs.time.value, this.refs.onTime.value)}
-                    />
-                    <img 
-                        src="exit-icon.png" 
-                        alt="exit-icon" 
-                        className="table-icon"  
-                        onClick={()=>this.props.setEditDailyMode(this.props.editDailyMode)}
-                    /> 
-                </td>
-                <td>
-                    <div className="ui transparent input icon-input">
-                        <input type="text" defaultValue={el.name} ref="name"/>
-                    </div>
-                </td>
-                <td>
-                    <div className="ui transparent input icon-input">
-                        <input type="text" defaultValue={el.time} ref="time"/>
-                    </div>
-                </td>
-                <td>
-                    <div className="ui transparent input icon-input">
-                        <input type="text" defaultValue={el.onTime} ref="onTime"/>
-                    </div>
-                </td>
-            </tr>
+            </tr> 
+            
     }
     render() {
         const filterDailys = this.props.dailys.filter(el => {
@@ -76,6 +79,6 @@ class DailyList extends Component {
 const mapStateToProps = state => ({
     dailys: state.dailys,
     dailySearch: state.dailySearch,
-    editDailyMode: state.editDailyMode
+    dailyMode: state.dailyMode
 });
-export default connect(mapStateToProps, {deleteUser, setEditDailyMode, updateDailyComponentValue})(DailyList);
+export default connect(mapStateToProps, {deleteUser, updateDailyComponentValue, setDailyMode})(DailyList);
