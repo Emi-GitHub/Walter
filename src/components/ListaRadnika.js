@@ -6,7 +6,7 @@ import '../style/ListaRadnika.css';
 
 class ListaRadnika extends Component {
     componentWillMount() {
-        this.props.setNewArray(JSON.parse(localStorage.getItem("nesto")))
+        this.props.setNewArray(JSON.parse(localStorage.getItem("something")))
       }
     onFormSubmit = event => {
         event.preventDefault();
@@ -14,7 +14,7 @@ class ListaRadnika extends Component {
         this.props.refreshContent();
     }
     render() {
-        localStorage.setItem('nesto', JSON.stringify(this.props.employees))
+        localStorage.setItem('something', JSON.stringify(this.props.employees))
         return (
             <div>
                 <form onSubmit={this.onFormSubmit}>

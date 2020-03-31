@@ -130,3 +130,9 @@ export const setNewArray = value => {
         payload: value
     }
 }
+export const setNewDailys = value => {
+    return {
+        type: 'SET_NEW_DAILYS',
+        payload: value
+    }
+}

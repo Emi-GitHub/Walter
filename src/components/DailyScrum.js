@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setName, setTime, setDailySearch, addDailys, refreshName, refreshTime, setOnTime, setMess, setTimeMess} from '../actions';
+import { setName, setTime, setDailySearch, addDailys, refreshName, refreshTime, setOnTime, setMess, setTimeMess, setNewDailys} from '../actions';
 import DailyList from './DailyList';
 import '../style/DailyScrum.css';
 
 class DailyScrum extends Component {
+    componentWillMount() {
+        this.props.setNewDailys(JSON.parse(localStorage.getItem("somethingDaily")))
+      }
     onTimeFunction = () => {
         var hours = this.props.time.split(":")[0];
         var minutes = this.props.time.split(":")[1];
@@ -30,7 +33,10 @@ class DailyScrum extends Component {
     onFormSubmit = event => {
         event.preventDefault();
         if ((this.validationName()===false && this.validateTime()===false) || (this.validationName()===false) || (this.validateTime()===false)){console.log("not correct")}
-        else  this.props.addDailys(this.props.dailys, this.props.name, this.props.time, this.props.onTime);
+        else  {
+            this.props.addDailys(this.props.dailys, this.props.name, this.props.time, this.props.onTime);
+            //localStorage.setItem('somethingDaily', JSON.stringify(this.props.dailys))
+        }
         this.props.refreshName();
         this.props.refreshTime();
     }
@@ -57,6 +63,7 @@ class DailyScrum extends Component {
         )
     }
     render() {
+        localStorage.setItem('somethingDaily', JSON.stringify(this.props.dailys))
         this.onTimeFunction();
         return (
             <div>
@@ -123,4 +130,4 @@ const mapStateToProps = state => ({
     mess: state.mess,
     timeMess: state.timeMess
 });
-export default connect(mapStateToProps, {setName, setTime, setDailySearch, addDailys, refreshName, refreshTime, setOnTime, setMess, setTimeMess})(DailyScrum);
+export default connect(mapStateToProps, {setName, setTime, setDailySearch, addDailys, refreshName, refreshTime, setOnTime, setMess, setTimeMess, setNewDailys})(DailyScrum);
