@@ -85,7 +85,7 @@ class DailyScrum extends Component {
                             />
                             <i className="users icon"></i>
                         </div>
-                        <div className="ui left icon input employee-input">
+                        <div className="ui left icon input employee-input time">
                             <input 
                                 type="text" 
                                 placeholder="_ _ : _ _"
@@ -95,7 +95,7 @@ class DailyScrum extends Component {
                             />
                             <i className="clock icon"></i>
                         </div>
-                        <button className="ui button">Dodaj</button>
+                        <button className="ui button add">Dodaj</button>
                     </div>
                     {this.props.mess===false ? this.notExistMessage() : null}
                     {this.props.timeMess===true ? this.showTimeError() : null}

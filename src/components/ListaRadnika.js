@@ -33,7 +33,9 @@ class ListaRadnika extends Component {
                             />
                             <i className="users icon"></i>
                         </div>
-                        <button className="ui button">Dodaj</button>
+                        <div className="add-employee">
+                            <button className="ui button add-button">Dodaj</button>
+                        </div>
                     </div>
                 </form>
                 <div className="employee-parent">

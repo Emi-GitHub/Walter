@@ -25,7 +25,7 @@ class EmoloyeeList extends Component {
     renderEmployees = (employee, i) => {
         return i===this.props.mode ? this.showEdit(employee, i) :
             <div className="employee" key={i}>
-                {employee}
+                <p className="employee-p">{employee}</p>
                 <div className="ui small buttons two-buttons">
                     <div className="ui button employee-button" onClick={()=>this.onEditClick(i)}>Izmijeni</div>
                     <div className="ui button employee-button" onClick={()=>this.props.deleteEmployee(this.props.employees, i)}>Obriši</div> 
