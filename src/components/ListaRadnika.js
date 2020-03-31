@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EmployeeList from './EmoloyeeList';
-import { setContent, addEmployees, refreshContent, setSearch } from '../actions';
+import { setContent, addEmployees, refreshContent, setSearch,  setNewArray } from '../actions';
 import '../style/ListaRadnika.css';
 
 class ListaRadnika extends Component {
+    componentWillMount() {
+        this.props.setNewArray(JSON.parse(localStorage.getItem("nesto")))
+      }
     onFormSubmit = event => {
         event.preventDefault();
         this.props.addEmployees(this.props.employees, this.props.content);
         this.props.refreshContent();
     }
     render() {
+        localStorage.setItem('nesto', JSON.stringify(this.props.employees))
         return (
             <div>
                 <form onSubmit={this.onFormSubmit}>
@@ -47,4 +51,4 @@ const mapStateToProps = state => ({
     employees: state.employees,
     content: state.content
 });
-export default connect(mapStateToProps, {setContent, addEmployees, refreshContent, setSearch})(ListaRadnika);
+export default connect(mapStateToProps, {setContent, addEmployees, refreshContent, setSearch, setNewArray})(ListaRadnika);

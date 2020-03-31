@@ -3,6 +3,7 @@ export const employees = (state=['John Doe', 'Chloe Doe', 'John Smith'], action)
         case 'ADD_EMPLOYEE': return action.payload;
         case 'DELETE_EMPLOYEE': return action.payload;
         case 'UPDATE_COMPONENT_VALUE': return action.payload;
+        case 'SET_NEW_ARRAY': return action.payload;
         default: return state;
     }
 }

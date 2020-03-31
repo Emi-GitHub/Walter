@@ -118,3 +118,15 @@ export const setDailyMode = value => {
         payload: value
     }
 }
+export const setCounter = value => {
+    return {
+        type: 'SET_COUNTER',
+        payload: value+1
+    }
+}
+export const setNewArray = value => {
+    return {
+        type: 'SET_NEW_ARRAY',
+        payload: value
+    }
+}

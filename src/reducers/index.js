@@ -26,5 +26,5 @@ export default combineReducers ({
     mess,
     timeMess,
     mode,
-    dailyMode
+    dailyMode,
 })
