@@ -23,7 +23,7 @@ class DailyList extends Component {
   showEdit = (el, i) => {
     return (
       <tr key={i}>
-        <td className="edit-mode">
+        <td className="edit-mode first-column">
           <img
             src="save-icon.png"
             alt="save-icon"
@@ -86,7 +86,7 @@ class DailyList extends Component {
       this.showEdit(el, i)
     ) : (
       <tr key={i}>
-        <td>
+        <td className="first-column table-height">
           <img
             src="edit-icon.png"
             alt="edit-icon"
@@ -103,6 +103,25 @@ class DailyList extends Component {
         <td>{el.name}</td>
         <td>{el.time}</td>
         <td>{el.onTime}</td>
+        {/*<td>
+          <div className="ui disabled input ">
+            <input
+              type="text"
+              defaultValue={el.name}
+              style={{ border: "0px", fontWeight: "bold", color: "black" }}
+            />
+          </div>
+        </td>
+        <td>
+          <div className="ui disabled input ">
+            <input type="text" defaultValue={el.time} />
+          </div>
+        </td>
+        <td>
+          <div className="ui disabled input ">
+            <input type="text" defaultValue={el.onTime} />
+          </div>
+        </td>*/}
       </tr>
     );
   };

@@ -9,7 +9,8 @@ tbody {
   background: whitesmoke;
 }
 .table-icon {
-  width: 20px;
+  width: 25px;
+  height: 25px;
 }
 .edit-icon {
   white-space: 20px;
@@ -23,7 +24,7 @@ img {
   margin-right: 120px !important;
 }
 .icon-input {
-  margin-left: 90px;
+  margin-left: 80px;
 }
 .icon-input-time {
   margin-left: 130px;
@@ -44,6 +45,20 @@ img {
 .employee-list {
   overflow-y: scroll;
   height: 200px;
+}
+.first-column {
+  width: 200px;
+}
+.table-height {
+  height: 55.56px;
+}
+.time-picker {
+  width: 150px;
+  margin-right: 20px;
+}
+.time-label {
+  margin-top: 10px;
+  margin-right: 10px;
 }
 @media only screen and (max-width: 800px),
   (min-device-width: 799px) and (max-device-width: 1024px) {

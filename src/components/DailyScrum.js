@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import TimePicker from "react-time-picker";
 import {
   setName,
   setTime,
@@ -20,8 +21,8 @@ class DailyScrum extends Component {
     this.props.setNewDailys(JSON.parse(localStorage.getItem("somethingDaily")));
   }
   onTimeFunction = () => {
-    var hours = this.props.time.split(":")[0];
-    var minutes = this.props.time.split(":")[1];
+    var hours = this.props.time; /*.split(":")[0];*/
+    var minutes = this.props.time; /*.split(":")[1];*/
     if (
       (parseInt(hours) === 8 && parseInt(minutes) > 45) ||
       parseInt(hours) > 8
@@ -133,8 +134,8 @@ class DailyScrum extends Component {
               />
               <i className="users icon"></i>
             </div>
-            <div className="ui left icon input employee-input time">
-              <input
+            <div className="ui input employee-input time">
+              {/*<input
                 type="text"
                 placeholder="_ _ : _ _"
                 value={this.props.time}
@@ -144,12 +145,22 @@ class DailyScrum extends Component {
                 }}
                 required
               />
-              <i className="clock icon"></i>
+              <i className="clock icon"></i>*/}
+              <label className="time-label">Unesi vrijeme: </label>
+              <TimePicker
+                className="time-picker"
+                onChange={(value) => {
+                  this.props.setTime(value);
+                  this.props.setTimeMess(false);
+                }}
+                value={this.props.time}
+                name="klik"
+              />
+              <button className="ui button add">Dodaj</button>
             </div>
-            <button className="ui button add">Dodaj</button>
           </div>
           {this.props.mess === false ? this.notExistMessage() : null}
-          {this.props.timeMess === true ? this.showTimeError() : null}
+          {/*{this.props.timeMess === true ? this.showTimeError() : null}*/}
         </form>
         <div className="employe-table">
           <table className="ui celled table">
