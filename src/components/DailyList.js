@@ -23,7 +23,7 @@ class DailyList extends Component {
   showEdit = (el, i) => {
     return (
       <tr key={i}>
-        <td>
+        <td className="edit-mode">
           <img
             src="save-icon.png"
             alt="save-icon"
@@ -45,19 +45,37 @@ class DailyList extends Component {
             onClick={() => this.props.setDailyMode(false)}
           />
         </td>
-        <td>
-          <div className="ui transparent input icon-input">
-            <input type="text" defaultValue={el.name} ref="name" />
+        <td className="edit-mode">
+          <div className="ui input icon-input">
+            <input
+              type="text"
+              defaultValue={el.name}
+              ref="name"
+              autofocus="true"
+              className="edit-focus"
+            />
           </div>
         </td>
-        <td>
+        <td className="edit-mode">
           <div className="ui transparent input icon-input-time">
-            <input type="text" defaultValue={el.time} ref="time" />
+            <input
+              type="text"
+              defaultValue={el.time}
+              ref="time"
+              autofocus="true"
+              className="edit-focus"
+            />
           </div>
         </td>
-        <td>
+        <td className="edit-mode">
           <div className="ui transparent input icon-input-time">
-            <input type="text" defaultValue={el.onTime} ref="onTime" />
+            <input
+              type="text"
+              defaultValue={el.onTime}
+              ref="onTime"
+              autofocus="true"
+              className="edit-focus"
+            />
           </div>
         </td>
       </tr>
@@ -89,12 +107,20 @@ class DailyList extends Component {
     );
   };
   render() {
-    const filterDailys = this.props.dailys.filter((el) => {
-      return el.name.indexOf(this.props.dailySearch) !== -1;
-    });
-    return filterDailys.map((el, i) => {
-      return this.renderDaily(el, i);
-    });
+    if (this.props.dailys.length === 0)
+      return <div>Lista radnika je prazna!</div>;
+    else if (this.props.dailys.length !== 0) {
+      const filterDailys = this.props.dailys.filter((el) => {
+        return (
+          el.name
+            .toUpperCase()
+            .indexOf(this.props.dailySearch.toUpperCase()) !== -1
+        );
+      });
+      return filterDailys.map((el, i) => {
+        return this.renderDaily(el, i);
+      });
+    }
   }
 }
 
@@ -102,6 +128,7 @@ const mapStateToProps = (state) => ({
   dailys: state.dailys,
   dailySearch: state.dailySearch,
   dailyMode: state.dailyMode,
+  employees: state.employees,
 });
 export default connect(mapStateToProps, {
   deleteUser,

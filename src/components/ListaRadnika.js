@@ -36,6 +36,7 @@ class ListaRadnika extends Component {
             <div className="ui left icon input employee-input">
               <input
                 type="text"
+                name="uposlenik"
                 placeholder="Dodaj uposlenika..."
                 value={this.props.content}
                 onChange={(event) => this.props.setContent(event.target.value)}

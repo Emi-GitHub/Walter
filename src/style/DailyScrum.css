@@ -28,6 +28,23 @@ img {
 .icon-input-time {
   margin-left: 130px;
 }
+.edit-mode {
+  background-color: rgba(63, 191, 191, 0.2);
+}
+.edit-focus:focus {
+  color: red !important;
+  border: 0px !important;
+}
+.edit-focus {
+  background-color: rgba(63, 191, 191, 0) !important;
+  border: 0px !important;
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+.employee-list {
+  overflow-y: scroll;
+  height: 200px;
+}
 @media only screen and (max-width: 800px),
   (min-device-width: 799px) and (max-device-width: 1024px) {
   tbody {

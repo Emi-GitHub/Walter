@@ -63,16 +63,22 @@ class EmoloyeeList extends Component {
     );
   };
   render() {
-    const filterEmployees = this.props.employees.filter((employee) => {
-      return employee.indexOf(this.props.search) !== -1;
-    });
-    return (
-      <div>
-        {filterEmployees.map((employee, i) => {
-          return this.renderEmployees(employee, i);
-        })}
-      </div>
-    );
+    if (this.props.employees.length === 0)
+      return <div>Lista radnika je prazna!</div>;
+    else if (this.props.employees.length !== 0) {
+      const filterEmployees = this.props.employees.filter((employee) => {
+        return (
+          employee.toUpperCase().indexOf(this.props.search.toUpperCase()) !== -1
+        );
+      });
+      return (
+        <div>
+          {filterEmployees.map((employee, i) => {
+            return this.renderEmployees(employee, i);
+          })}
+        </div>
+      );
+    }
   }
 }
 const mapStateToProps = (state) => ({

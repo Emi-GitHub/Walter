@@ -85,11 +85,26 @@ class DailyScrum extends Component {
       </div>
     );
   };
+  employeesList = (employee, i) => {
+    return (
+      <div className="employee" key={i}>
+        <p className="employee-p">{employee}</p>
+        <br />
+        <br />
+      </div>
+    );
+  };
   render() {
     localStorage.setItem("somethingDaily", JSON.stringify(this.props.dailys));
     this.onTimeFunction();
     return (
       <div>
+        <div className="employee-parent">
+          <h3>Pregled liste uposlenika:</h3>
+          <div className="ui segment employee-list">
+            {this.props.employees.map((el, i) => this.employeesList(el, i))}
+          </div>
+        </div>
         <div className="search-employee">
           <div className="ui icon input employee-input">
             <input
