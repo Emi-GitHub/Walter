@@ -1,45 +1,45 @@
 .employe-table {
-    margin: 30px 20px 30px 20px;
+  margin: 30px 20px 30px 20px;
 }
-thead, tbody {
-    text-align: center;
+thead,
+tbody {
+  text-align: center;
 }
-.table-name { 
-    background: whitesmoke;
+.table-name {
+  background: whitesmoke;
 }
 .table-icon {
-    width: 20px;
+  width: 20px;
 }
 .edit-icon {
-    white-space: 20px;
+  white-space: 20px;
 }
 img {
-    display: inline-block;
-    margin-right: 1em;
+  display: inline-block;
+  margin-right: 1em;
 }
 .negative-mess {
-    margin-left: 20px !important;
-    margin-right: 120px !important;
+  margin-left: 20px !important;
+  margin-right: 120px !important;
 }
 .icon-input {
-    margin-left: 90px;
+  margin-left: 90px;
 }
 .icon-input-time {
-    margin-left: 130px;
+  margin-left: 130px;
 }
-@media 
-only screen and (max-width: 800px),
-(min-device-width: 799px) and (max-device-width: 1024px)  {
-    tbody {
-        height: 140px;       
-        overflow-y: auto;    
-        overflow-x: hidden; 
-    }
-    .time {
-        margin-bottom: 10px;
-    }
-    .add {
-        margin: auto;
-        width: 50%;
-    }
+@media only screen and (max-width: 800px),
+  (min-device-width: 799px) and (max-device-width: 1024px) {
+  tbody {
+    height: 140px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .time {
+    margin-bottom: 10px;
+  }
+  .add {
+    margin: auto;
+    width: 50%;
+  }
 }
