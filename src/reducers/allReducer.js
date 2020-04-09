@@ -76,7 +76,7 @@ export const name = (state = "", action) => {
       return state;
   }
 };
-export const time = (state = "", action) => {
+export const time = (state = "08:00", action) => {
   switch (action.type) {
     case "SET_TIME":
       return action.payload;

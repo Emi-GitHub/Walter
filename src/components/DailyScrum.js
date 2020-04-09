@@ -22,8 +22,8 @@ class DailyScrum extends Component {
     this.props.setNewDailys(JSON.parse(localStorage.getItem("somethingDaily")));
   }
   onTimeFunction = () => {
-    var hours = this.props.time; /*.split(":")[0];*/
-    var minutes = this.props.time; /*.split(":")[1];*/
+    var hours = this.props.time.split(":")[0];
+    var minutes = this.props.time.split(":")[1];
     if (
       (parseInt(hours) === 8 && parseInt(minutes) > 45) ||
       parseInt(hours) > 8
@@ -64,7 +64,6 @@ class DailyScrum extends Component {
         this.props.time,
         this.props.onTime
       );
-      //localStorage.setItem("somethingDaily", JSON.stringify(this.props.dailys));
     }
     this.props.refreshName();
     this.props.refreshTime();
@@ -136,17 +135,6 @@ class DailyScrum extends Component {
               <i className="users icon"></i>
             </div>
             <div className="ui input employee-input time">
-              {/*<input
-                type="text"
-                placeholder="_ _ : _ _"
-                value={this.props.time}
-                onChange={(event) => {
-                  this.props.setTime(event.target.value);
-                  this.props.setTimeMess(false);
-                }}
-                required
-              />
-              <i className="clock icon"></i>*/}
               <label className="time-label">Unesi vrijeme: </label>
               <TimePicker
                 className="time-picker"
@@ -161,7 +149,6 @@ class DailyScrum extends Component {
             </div>
           </div>
           {this.props.mess === false ? this.notExistMessage() : null}
-          {/*{this.props.timeMess === true ? this.showTimeError() : null}*/}
         </form>
         <div className="employe-table">
           <table className="ui celled table">

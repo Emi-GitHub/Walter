@@ -1,20 +1,20 @@
 import { combineReducers } from "redux";
-import { employees } from "./otherReducer";
-import { content } from "./otherReducer";
-import { editMode } from "./otherReducer";
-import { search } from "./otherReducer";
-import { dailys } from "./otherReducer";
-import { name } from "./otherReducer";
-import { time } from "./otherReducer";
-import { onTime } from "./otherReducer";
-import { dailySearch } from "./otherReducer";
-import { mess } from "./otherReducer";
-import { timeMess } from "./otherReducer";
-import { mode } from "./otherReducer";
-import { dailyMode } from "./otherReducer";
-import { myNameRef } from "./otherReducer";
-import { myTimeRef } from "./otherReducer";
-import { myOnTimeRef } from "./otherReducer";
+import { employees } from "./allReducer";
+import { content } from "./allReducer";
+import { editMode } from "./allReducer";
+import { search } from "./allReducer";
+import { dailys } from "./allReducer";
+import { name } from "./allReducer";
+import { time } from "./allReducer";
+import { onTime } from "./allReducer";
+import { dailySearch } from "./allReducer";
+import { mess } from "./allReducer";
+import { timeMess } from "./allReducer";
+import { mode } from "./allReducer";
+import { dailyMode } from "./allReducer";
+import { myNameRef } from "./allReducer";
+import { myTimeRef } from "./allReducer";
+import { myOnTimeRef } from "./allReducer";
 
 export default combineReducers({
   employees,

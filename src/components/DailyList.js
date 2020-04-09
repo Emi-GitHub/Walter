@@ -5,13 +5,32 @@ import {
   deleteUser,
   updateDailyComponentValue,
   setDailyMode,
+  setOnTime,
 } from "../actions";
 
 class DailyList extends Component {
+  onTimeFunction = () => {
+    var hours = this.props.time.split(":")[0];
+    var minutes = this.props.time.split(":")[1];
+    if (
+      (parseInt(hours) === 8 && parseInt(minutes) > 45) ||
+      parseInt(hours) > 8
+    )
+      this.props.setOnTime("NE");
+    else this.props.setOnTime("DA");
+  };
   onEditClick = (i) => {
     this.props.setDailyMode(i);
   };
   saveEditMode = (dailyee, i, name, time, onTime) => {
+    var hours = time.split(":")[0];
+    var minutes = time.split(":")[1];
+    if (
+      (parseInt(hours) === 8 && parseInt(minutes) > 45) ||
+      parseInt(hours) > 8
+    )
+      onTime = "NE";
+    else onTime = "DA";
     this.props.updateDailyComponentValue(
       this.props.dailys,
       i,
@@ -52,7 +71,6 @@ class DailyList extends Component {
               type="text"
               defaultValue={el.name}
               ref={this.props.myNameRef}
-              autofocus="true"
               className="edit-focus"
             />
           </div>
@@ -63,7 +81,6 @@ class DailyList extends Component {
               type="text"
               defaultValue={el.time}
               ref={this.props.myTimeRef}
-              autofocus="true"
               className="edit-focus"
             />
           </div>
@@ -74,7 +91,6 @@ class DailyList extends Component {
               type="text"
               defaultValue={el.onTime}
               ref={this.props.myOnTimeRef}
-              autofocus="true"
               className="edit-focus"
             />
           </div>
@@ -152,18 +168,20 @@ const mapStateToProps = (state) => ({
   myNameRef: state.myNameRef,
   myTimeRef: state.myTimeRef,
   myOnTimeRef: state.myOnTimeRef,
+  time: state.time,
 });
 DailyList.propTypes = {
   dailys: PropTypes.array,
   dailySearch: PropTypes.string,
-  dailyMode: PropTypes.bool,
   employees: PropTypes.array,
   myNameRef: PropTypes.object,
   myTimeRef: PropTypes.object,
   myOnTimeRef: PropTypes.object,
+  time: PropTypes.string,
 };
 export default connect(mapStateToProps, {
   deleteUser,
   updateDailyComponentValue,
   setDailyMode,
+  setOnTime,
 })(DailyList);
