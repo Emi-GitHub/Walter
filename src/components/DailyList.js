@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import {
   deleteUser,
   updateDailyComponentValue,
@@ -152,6 +153,15 @@ const mapStateToProps = (state) => ({
   myTimeRef: state.myTimeRef,
   myOnTimeRef: state.myOnTimeRef,
 });
+DailyList.propTypes = {
+  dailys: PropTypes.array,
+  dailySearch: PropTypes.string,
+  dailyMode: PropTypes.bool,
+  employees: PropTypes.array,
+  myNameRef: PropTypes.object,
+  myTimeRef: PropTypes.object,
+  myOnTimeRef: PropTypes.object,
+};
 export default connect(mapStateToProps, {
   deleteUser,
   updateDailyComponentValue,

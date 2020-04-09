@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { deleteEmployee, updateComponentValue, setMode } from "../actions";
 
-class EmoloyeeList extends Component {
+class EmployeeList extends Component {
   onEditClick = (i) => {
     this.props.setMode(i);
   };
@@ -86,8 +87,13 @@ const mapStateToProps = (state) => ({
   search: state.search,
   mode: state.mode,
 });
+EmployeeList.propTypes = {
+  employees: PropTypes.array,
+  search: PropTypes.string,
+  mode: PropTypes.bool,
+};
 export default connect(mapStateToProps, {
   deleteEmployee,
   updateComponentValue,
   setMode,
-})(EmoloyeeList);
+})(EmployeeList);

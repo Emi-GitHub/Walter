@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import EmployeeList from "./EmoloyeeList";
+import PropTypes from "prop-types";
+import EmployeeList from "./EmployeeList";
 import {
   setContent,
   addEmployees,
@@ -64,6 +65,10 @@ const mapStateToProps = (state) => ({
   employees: state.employees,
   content: state.content,
 });
+ListaRadnika.propTypes = {
+  employees: PropTypes.array,
+  content: PropTypes.string,
+};
 export default connect(mapStateToProps, {
   setContent,
   addEmployees,

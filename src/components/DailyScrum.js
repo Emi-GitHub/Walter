@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import TimePicker from "react-time-picker";
 import {
   setName,
@@ -192,6 +193,15 @@ const mapStateToProps = (state) => ({
   mess: state.mess,
   timeMess: state.timeMess,
 });
+DailyScrum.propTypes = {
+  employees: PropTypes.array,
+  dailys: PropTypes.array,
+  name: PropTypes.string,
+  time: PropTypes.string,
+  onTime: PropTypes.string,
+  mess: PropTypes.bool,
+  timeMess: PropTypes.bool,
+};
 export default connect(mapStateToProps, {
   setName,
   setTime,
