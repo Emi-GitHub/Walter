@@ -12,6 +12,9 @@ import { mess } from "./otherReducer";
 import { timeMess } from "./otherReducer";
 import { mode } from "./otherReducer";
 import { dailyMode } from "./otherReducer";
+import { myNameRef } from "./otherReducer";
+import { myTimeRef } from "./otherReducer";
+import { myOnTimeRef } from "./otherReducer";
 
 export default combineReducers({
   employees,
@@ -27,4 +30,7 @@ export default combineReducers({
   timeMess,
   mode,
   dailyMode,
+  myNameRef,
+  myTimeRef,
+  myOnTimeRef,
 });

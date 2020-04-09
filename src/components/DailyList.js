@@ -32,9 +32,9 @@ class DailyList extends Component {
               this.saveEditMode(
                 el,
                 i,
-                this.refs.name.value,
-                this.refs.time.value,
-                this.refs.onTime.value
+                this.props.myNameRef.current.value,
+                this.props.myTimeRef.current.value,
+                this.props.myOnTimeRef.current.value
               )
             }
           />
@@ -50,7 +50,7 @@ class DailyList extends Component {
             <input
               type="text"
               defaultValue={el.name}
-              ref="name"
+              ref={this.props.myNameRef}
               autofocus="true"
               className="edit-focus"
             />
@@ -61,7 +61,7 @@ class DailyList extends Component {
             <input
               type="text"
               defaultValue={el.time}
-              ref="time"
+              ref={this.props.myTimeRef}
               autofocus="true"
               className="edit-focus"
             />
@@ -72,7 +72,7 @@ class DailyList extends Component {
             <input
               type="text"
               defaultValue={el.onTime}
-              ref="onTime"
+              ref={this.props.myOnTimeRef}
               autofocus="true"
               className="edit-focus"
             />
@@ -148,6 +148,9 @@ const mapStateToProps = (state) => ({
   dailySearch: state.dailySearch,
   dailyMode: state.dailyMode,
   employees: state.employees,
+  myNameRef: state.myNameRef,
+  myTimeRef: state.myTimeRef,
+  myOnTimeRef: state.myOnTimeRef,
 });
 export default connect(mapStateToProps, {
   deleteUser,

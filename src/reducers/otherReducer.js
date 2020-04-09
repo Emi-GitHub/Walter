@@ -1,3 +1,5 @@
+import React from "react";
+
 export const employees = (
   state = ["John Doe", "Chloe Doe", "John Smith"],
   action
@@ -135,6 +137,30 @@ export const mode = (state = false, action) => {
 export const dailyMode = (state = false, action) => {
   switch (action.type) {
     case "SET_DAILY_MODE":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+export const myNameRef = (state = React.createRef(), action) => {
+  switch (action.type) {
+    case "SET_NEME_REF":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+export const myTimeRef = (state = React.createRef(), action) => {
+  switch (action.type) {
+    case "SET_TIME_REF":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+export const myOnTimeRef = (state = React.createRef(), action) => {
+  switch (action.type) {
+    case "SET_ON_TIME_REF":
       return action.payload;
     default:
       return state;
