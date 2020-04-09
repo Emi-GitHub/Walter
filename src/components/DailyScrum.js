@@ -63,7 +63,7 @@ class DailyScrum extends Component {
         this.props.time,
         this.props.onTime
       );
-      //localStorage.setItem('somethingDaily', JSON.stringify(this.props.dailys))
+      //localStorage.setItem("somethingDaily", JSON.stringify(this.props.dailys));
     }
     this.props.refreshName();
     this.props.refreshTime();
